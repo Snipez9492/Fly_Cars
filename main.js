@@ -1,3 +1,4 @@
+const prompt = require('prompt-sync')();
 
 class Cars {
     constructor(lat, long) {
@@ -13,11 +14,15 @@ class Cars {
         return this.long;
     }
 }
+let lat1 = Number(prompt('Enter lat1: '));
+let long1 = Number(prompt('Enter long1: '));
+let lat2 = Number(prompt('Enter lat2: '));
+let long2 = Number(prompt('Enter long2: '));
 
-const car1 = new Cars(42.806911, -71.290611);
-const car2 = new Cars(42.742, -71.3161);
+const car1 = new Cars(lat1, long1);
+const car2 = new Cars(lat2, long2);
 
-const violation = (car1, car2) => {
+const violation = () => {
     let max = 500;
     let altitude = 10;
 
@@ -42,12 +47,14 @@ const violation = (car1, car2) => {
         if (distance > 10) {
             return 'This is a violation';
         } else {
-            return 'You are good.';
+            return `Your are good. Your distance is ${distance}ft`;
         }
     }
 }
 
+
+//console.log(setTimeout(violation, 1000));
+//42.806911, -71.290611
+//42.742, -71.3161
+
 console.log(violation(car1, car2));
-
-//console.log(setInterval(violation, 1000, car1, car2));
-
